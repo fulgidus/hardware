@@ -3037,7 +3037,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
 			(at 95.25 92.71 0)
 			(hide yes)
 			(show_name no)
@@ -3770,7 +3770,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
 			(at 106.68 34.29 0)
 			(hide yes)
 			(show_name no)
@@ -4022,7 +4022,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm"
 			(at 48.26 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -4465,7 +4465,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
 			(at 77.47 100.33 0)
 			(hide yes)
 			(show_name no)
@@ -4790,7 +4790,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
 			(at 115.57 92.71 0)
 			(hide yes)
 			(show_name no)
@@ -5041,7 +5041,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
 			(at 67.31 100.33 0)
 			(hide yes)
 			(show_name no)
@@ -5132,7 +5132,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
 			(at 87.63 100.33 0)
 			(hide yes)
 			(show_name no)
@@ -5618,7 +5618,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
 			(at 105.41 92.71 0)
 			(hide yes)
 			(show_name no)
@@ -6301,7 +6301,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm"
 			(at 48.26 116.84 0)
 			(hide yes)
 			(show_name no)
@@ -6335,25 +6335,25 @@
 			)
 		)
 		(pin "13"
-			(uuid "541fa97c-cb09-4c1c-a040-bc9cfea574d2")
+			(uuid "541fa97c-cb09-4c1c-a040-bc9cfea574d3")
 		)
 		(pin "9"
-			(uuid "d178c988-90a2-4a23-9df1-4529a642b721")
+			(uuid "d178c988-90a2-4a23-9df1-4529a642b722")
 		)
 		(pin "11"
-			(uuid "0efc3200-ed5e-4ea2-8f5f-8c84a04a096d")
+			(uuid "0efc3200-ed5e-4ea2-8f5f-8c84a04a096e")
 		)
 		(pin "12"
-			(uuid "2f43c479-e59f-4d70-8345-235744760187")
+			(uuid "2f43c479-e59f-4d70-8345-235744760188")
 		)
 		(pin "6"
 			(uuid "523b9490-8864-4a3d-b63d-628d509aafd2")
 		)
 		(pin "8"
-			(uuid "c5ef4089-6cec-43ee-b512-c53ebbbe08c1")
+			(uuid "c5ef4089-6cec-43ee-b512-c53ebbbe08c2")
 		)
 		(pin "10"
-			(uuid "b97b60e1-46e3-4345-8422-cad805f46515")
+			(uuid "b97b60e1-46e3-4345-8422-cad805f46516")
 		)
 		(pin "5"
 			(uuid "4f65a18d-bae3-486b-a7f5-3e43a0e364de")
