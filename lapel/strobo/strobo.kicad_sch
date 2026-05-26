@@ -1439,6 +1439,196 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Switch:SW_SPDT"
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "SW"
+				(at 0 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "SW_SPDT"
+				(at 0 -5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 -7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Switch, single pole double throw"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "switch single-pole double-throw spdt ON-ON"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "SW_SPDT_0_1"
+				(circle
+					(center -2.032 0)
+					(radius 0.4572)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.651 0.254) (xy 1.651 2.286)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.032 2.54)
+					(radius 0.4572)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.032 -2.54)
+					(radius 0.4572)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "SW_SPDT_1_1"
+				(rectangle
+					(start -3.175 3.81)
+					(end 3.175 -3.81)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 5.08 2.54 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 -2.54 180)
+					(length 2.54)
+					(name "C"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Timer:ICM7556"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -2178,16 +2368,10 @@
 		(uuid "1030daad-8d58-4f42-a4c9-ee88de533792")
 	)
 	(junction
-		(at 124.46 29.21)
+		(at 62.23 34.29)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "13e76472-da58-4b7b-9f67-306824a2c1f4")
-	)
-	(junction
-		(at 62.23 24.13)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "192e9a97-0500-4e8c-bd66-84c00aab36db")
+		(uuid "1d6fd47b-a822-438a-a0e7-114289374a0a")
 	)
 	(junction
 		(at 77.47 116.84)
@@ -2256,7 +2440,19 @@
 		(uuid "953cf56d-337e-421d-9d1f-f8bddb99b7a3")
 	)
 	(junction
-		(at 132.08 29.21)
+		(at 62.23 24.13)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9c1b3239-53ed-4975-acd5-4dc4511f1d8c")
+	)
+	(junction
+		(at 124.46 36.83)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9dbe74ab-46b1-47e8-9a54-94fc2074f4e9")
+	)
+	(junction
+		(at 124.46 52.07)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "a0b6dbb8-ddb8-4de0-a952-0e5dcc18e061")
@@ -2292,12 +2488,6 @@
 		(uuid "c8dd44ea-82d4-47d9-a570-d6311ec5460a")
 	)
 	(junction
-		(at 62.23 34.29)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "ce325d69-534e-4b88-9d8e-5899042b4a2c")
-	)
-	(junction
 		(at 38.1 119.38)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2308,6 +2498,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e1b9f2d8-544f-42c2-91a8-e5238ea4b969")
+	)
+	(junction
+		(at 124.46 44.45)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "fed07a9d-ab91-459a-8dc3-27bd65d676c2")
 	)
 	(wire
 		(pts
@@ -2441,7 +2637,7 @@
 	)
 	(wire
 		(pts
-			(xy 132.08 29.21) (xy 132.08 34.29)
+			(xy 124.46 52.07) (xy 119.38 52.07)
 		)
 		(stroke
 			(width 0)
@@ -2521,6 +2717,16 @@
 	)
 	(wire
 		(pts
+			(xy 124.46 29.21) (xy 124.46 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "84ebd2b1-99e7-49a1-a687-75b8bb5b89d5")
+	)
+	(wire
+		(pts
 			(xy 77.47 116.84) (xy 87.63 116.84)
 		)
 		(stroke
@@ -2581,7 +2787,7 @@
 	)
 	(wire
 		(pts
-			(xy 124.46 29.21) (xy 124.46 34.29)
+			(xy 124.46 44.45) (xy 119.38 44.45)
 		)
 		(stroke
 			(width 0)
@@ -2754,7 +2960,7 @@
 		(at 29.21 31.75 0)
 		(unit 1)
 		(body_style 1)
-		(exclude_from_sim no)
+		(exclude_from_sim yes)
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
@@ -2781,7 +2987,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_USB:USB_C_Receptacle_G-Switch_GT-USB-7025"
+		(property "Footprint" "Connector_USB:USB_C_Receptacle_GCT_USB4125-xx-x-0190_6P_TopMnt_Horizontal"
 			(at 33.02 29.21 0)
 			(hide yes)
 			(show_name no)
@@ -3070,7 +3276,18 @@
 				)
 			)
 		)
-		(property "Sim.Pins" "1=K 2=A"
+		(property "Sim.Pins" "1=A 2=K"
+			(at 95.25 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "D"
 			(at 95.25 92.71 0)
 			(hide yes)
 			(show_name no)
@@ -3257,6 +3474,114 @@
 		)
 	)
 	(symbol
+		(lib_id "Switch:SW_SPDT")
+		(at 129.54 36.83 0)
+		(mirror x)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1449f8af-e0e7-4719-843a-0491fa4fdb88")
+		(property "Reference" "SW1"
+			(at 130.8101 31.75 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "0.001"
+			(at 128.2701 31.75 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Button_Switch_THT:SW_Slide_SPDT_Angled_CK_OS102011MA1Q"
+			(at 129.54 36.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 129.54 29.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Switch, single pole double throw"
+			(at 129.54 36.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "R"
+			(at 129.54 36.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "2=+ 3=-"
+			(at 129.54 36.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "a70e7e83-6012-4c67-b2a7-664a324dc71d")
+		)
+		(pin "3"
+			(uuid "e0726a07-7aa3-4f55-b289-e62d9001edae")
+		)
+		(pin "2"
+			(uuid "3040fd7f-94a3-42e3-b223-1869d5ae6863")
+		)
+		(instances
+			(project "strobo"
+				(path "/856f5135-ece7-4bb1-acac-54f146bb3372"
+					(reference "SW1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 48.26 127 0)
 		(unit 1)
@@ -3413,8 +3738,8 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 128.27 34.29 90)
-		(mirror x)
+		(at 119.38 48.26 0)
+		(mirror y)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3425,7 +3750,7 @@
 		(fields_autoplaced yes)
 		(uuid "1e1b6ca9-312d-4295-978a-b24b5b8d216e")
 		(property "Reference" "C2"
-			(at 126.9999 38.1 0)
+			(at 115.57 46.9899 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3436,7 +3761,7 @@
 			)
 		)
 		(property "Value" "4.7µF"
-			(at 129.5399 38.1 0)
+			(at 115.57 49.5299 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3447,7 +3772,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
-			(at 132.08 35.2552 0)
+			(at 118.4148 52.07 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3458,7 +3783,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 128.27 34.29 0)
+			(at 119.38 48.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3469,7 +3794,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 128.27 34.29 0)
+			(at 119.38 48.26 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3579,7 +3904,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 132.08 29.21 90)
+		(at 124.46 52.07 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3590,7 +3915,7 @@
 		(fields_autoplaced yes)
 		(uuid "1ef8ca86-1dc7-4257-ae06-7a1513a5a4e6")
 		(property "Reference" "#PWR09"
-			(at 138.43 29.21 0)
+			(at 124.46 58.42 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3601,7 +3926,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 137.16 29.21 0)
+			(at 124.46 57.15 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3611,7 +3936,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 132.08 29.21 0)
+			(at 124.46 52.07 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3622,7 +3947,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 132.08 29.21 0)
+			(at 124.46 52.07 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3633,7 +3958,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 132.08 29.21 0)
+			(at 124.46 52.07 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3803,7 +4128,18 @@
 				)
 			)
 		)
-		(property "Sim.Pins" "1=K 2=A"
+		(property "Sim.Pins" "1=A 2=K"
+			(at 106.68 34.29 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "D"
 			(at 106.68 34.29 0)
 			(hide yes)
 			(show_name no)
@@ -4055,6 +4391,50 @@
 				)
 			)
 		)
+		(property "Sim.Library" "ICM7556.lib"
+			(at 48.26 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "ICM7556"
+			(at 48.26 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 48.26 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=1 2=2 3=3 4=4 5=5 6=6 7=7 8=8 9=9 10=10 11=11 12=12 13=13 14=14"
+			(at 48.26 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "13"
 			(uuid "541fa97c-cb09-4c1c-a040-bc9cfea574d2")
 		)
@@ -4111,7 +4491,7 @@
 		(at 71.12 34.29 270)
 		(unit 1)
 		(body_style 1)
-		(exclude_from_sim no)
+		(exclude_from_sim yes)
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
@@ -4194,7 +4574,7 @@
 		(mirror x)
 		(unit 1)
 		(body_style 1)
-		(exclude_from_sim no)
+		(exclude_from_sim yes)
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
@@ -4356,7 +4736,7 @@
 		(at 62.23 27.94 0)
 		(unit 1)
 		(body_style 1)
-		(exclude_from_sim no)
+		(exclude_from_sim yes)
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
@@ -4498,7 +4878,18 @@
 				)
 			)
 		)
-		(property "Sim.Pins" "1=K 2=A"
+		(property "Sim.Pins" "1=A 2=K"
+			(at 77.47 100.33 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "D"
 			(at 77.47 100.33 0)
 			(hide yes)
 			(show_name no)
@@ -4823,7 +5214,18 @@
 				)
 			)
 		)
-		(property "Sim.Pins" "1=K 2=A"
+		(property "Sim.Pins" "1=A 2=K"
+			(at 115.57 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "D"
 			(at 115.57 92.71 0)
 			(hide yes)
 			(show_name no)
@@ -4851,7 +5253,7 @@
 	)
 	(symbol
 		(lib_id "power:+3.3V")
-		(at 124.46 29.21 0)
+		(at 134.62 34.29 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4861,7 +5263,7 @@
 		(dnp no)
 		(uuid "44ae5483-de14-4e49-8b09-7891ffac0207")
 		(property "Reference" "#PWR010"
-			(at 124.46 33.02 0)
+			(at 130.81 34.29 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4872,7 +5274,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 121.158 26.416 0)
+			(at 137.414 30.988 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4882,7 +5284,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 124.46 29.21 0)
+			(at 134.62 34.29 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4893,7 +5295,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 124.46 29.21 0)
+			(at 134.62 34.29 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4904,7 +5306,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 124.46 29.21 0)
+			(at 134.62 34.29 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5074,7 +5476,18 @@
 				)
 			)
 		)
-		(property "Sim.Pins" "1=K 2=A"
+		(property "Sim.Pins" "1=A 2=K"
+			(at 67.31 100.33 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "D"
 			(at 67.31 100.33 0)
 			(hide yes)
 			(show_name no)
@@ -5165,7 +5578,18 @@
 				)
 			)
 		)
-		(property "Sim.Pins" "1=K 2=A"
+		(property "Sim.Pins" "1=A 2=K"
+			(at 87.63 100.33 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "D"
 			(at 87.63 100.33 0)
 			(hide yes)
 			(show_name no)
@@ -5273,7 +5697,7 @@
 		(at 48.26 36.83 90)
 		(unit 1)
 		(body_style 1)
-		(exclude_from_sim no)
+		(exclude_from_sim yes)
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
@@ -5651,7 +6075,18 @@
 				)
 			)
 		)
-		(property "Sim.Pins" "1=K 2=A"
+		(property "Sim.Pins" "1=A 2=K"
+			(at 105.41 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "D"
 			(at 105.41 92.71 0)
 			(hide yes)
 			(show_name no)
@@ -6073,7 +6508,7 @@
 	)
 	(symbol
 		(lib_id "Device:Battery_Cell")
-		(at 129.54 29.21 90)
+		(at 124.46 49.53 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6084,7 +6519,7 @@
 		(fields_autoplaced yes)
 		(uuid "9fee14df-7887-4581-b33d-22fd3ec094fd")
 		(property "Reference" "BT1"
-			(at 126.4284 25.4 0)
+			(at 128.27 46.4184 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6094,8 +6529,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "LIR2032"
-			(at 128.9684 25.4 0)
+		(property "Value" "3.7"
+			(at 128.27 48.9584 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6106,7 +6541,7 @@
 			)
 		)
 		(property "Footprint" "Battery:BatteryHolder_Multicomp_BC-2001_1x2032"
-			(at 128.016 29.21 90)
+			(at 124.46 48.006 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6117,7 +6552,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 128.016 29.21 90)
+			(at 124.46 48.006 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6128,7 +6563,7 @@
 			)
 		)
 		(property "Description" "Single-cell battery"
-			(at 129.54 29.21 0)
+			(at 124.46 49.53 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6139,7 +6574,7 @@
 			)
 		)
 		(property "Sim.Device" "V"
-			(at 129.54 29.21 0)
+			(at 124.46 49.53 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6150,7 +6585,7 @@
 			)
 		)
 		(property "Sim.Type" "DC"
-			(at 129.54 29.21 0)
+			(at 124.46 49.53 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6161,7 +6596,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=+ 2=-"
-			(at 129.54 29.21 0)
+			(at 124.46 49.53 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6325,6 +6760,50 @@
 		)
 		(property "Description" "Dual CMOS General Purpose Timer, DIP-14/SOIC-14"
 			(at 46.99 138.43 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" "ICM7556.lib"
+			(at 48.26 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "ICM7556"
+			(at 48.26 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 48.26 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=1 2=2 3=3 4=4 5=5 6=6 7=7 8=8 9=9 10=10 11=11 12=12 13=13 14=14"
+			(at 48.26 116.84 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7021,7 +7500,7 @@
 		(at 85.09 31.75 0)
 		(unit 1)
 		(body_style 1)
-		(exclude_from_sim no)
+		(exclude_from_sim yes)
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)

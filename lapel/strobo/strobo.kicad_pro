@@ -17,7 +17,7 @@
         "copper_text_upright": false,
         "courtyard_line_width": 0.05,
         "dimension_precision": 4,
-        "dimension_units": 3,
+        "dimension_units": 2,
         "dimensions": {
           "arrow_length": 1270000,
           "extension_offset": 500000,
@@ -76,7 +76,16 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        [
+          "items_not_allowed|50000000|28000000|5e00b153-fb9a-4f13-8cb1-24629c976aea|00000000-0000-0000-0000-000000000000",
+          "Does not interfere with battery insertion"
+        ],
+        [
+          "items_not_allowed|57462144|34550000|b7e70283-6226-49ac-8f1f-e56b7dde4c3b|00000000-0000-0000-0000-000000000000",
+          ""
+        ]
+      ],
       "meta": {
         "version": 2
       },
@@ -543,8 +552,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "",
-      "pos_files": "",
+      "plot": "dist/",
       "specctra_dsn": "",
       "step": "",
       "svg": "",
@@ -688,7 +696,14 @@
     "meta": {
       "version": 1
     },
-    "net_format_name": "",
+    "ngspice": {
+      "fix_include_paths": true,
+      "meta": {
+        "version": 0
+      },
+      "model_mode": 4,
+      "workbook_filename": "strobo.wbk"
+    },
     "page_layout_descr_file": "",
     "plot_directory": "",
     "reuse_designators": true,
@@ -708,7 +723,7 @@
         "uuid": "856f5135-ece7-4bb1-acac-54f146bb3372"
       }
     ],
-    "used_designators": "",
+    "used_designators": "SW1",
     "variants": []
   },
   "sheets": [

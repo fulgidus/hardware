@@ -1,0 +1,17 @@
+"Id";"Designator";"Footprint";"Quantity";"Designation";"Supplier and ref";
+1;"BT1";"BatteryHolder_Multicomp_BC-2001_1x2032";1;"LIR2032";;;
+2;"C1, C2";"C_0805_2012Metric";2;"4.7µF";;;
+3;"C3";"C_0805_2012Metric_Pad1.18x1.45mm_HandSolder";1;"10µF";;;
+4;"C4, C6";"C_0805_2012Metric_Pad1.18x1.45mm_HandSolder";2;"10nF";;;
+5;"C5";"C_0805_2012Metric_Pad1.18x1.45mm_HandSolder";1;"1µF";;;
+6;"D1, D2, D3, D4, D5, D6, D7";"LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder";7;"LED";;;
+7;"J1";"USB_C_Receptacle_GCT_USB4125-xx-x-0190_6P_TopMnt_Horizontal";1;"USB_C_Receptacle_PowerOnly_6P";;;
+8;"R1";"R_0805_2012Metric_Pad1.20x1.40mm_HandSolder";1;"5.1kΩ";;;
+9;"R2";"C_0805_2012Metric_Pad1.18x1.45mm_HandSolder";1;"5.1kΩ";;;
+10;"R3";"C_0805_2012Metric_Pad1.18x1.45mm_HandSolder";1;"27kΩ";;;
+11;"R4, R5, R7, R9, R10, R11, R12, R13, R14";"R_0805_2012Metric_Pad1.20x1.40mm_HandSolder";9;"1kΩ";;;
+12;"R6";"R_0805_2012Metric_Pad1.20x1.40mm_HandSolder";1;"22kΩ";;;
+13;"R8";"R_0805_2012Metric_Pad1.20x1.40mm_HandSolder";1;"15kΩ";;;
+14;"SW1";"SW_Slide_SPDT_Angled_CK_OS102011MA1Q";1;"SW_SPDT";;;
+15;"U1";"SOIC-14_3.9x8.7mm_P1.27mm";1;"ICM7556";;;
+16;"U2";"DFN-8-1EP_3x2mm_P0.5mm_EP1.7x1.4mm";1;"MCP73831-2-MC";;;

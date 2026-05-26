@@ -1,2 +1,6 @@
 *.lck
 .pi/*
+*.lock.json
+*.lock
+.history/
+temp-freerouting.dsn
