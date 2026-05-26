@@ -1,8 +1,5 @@
 # KiCad Libraries — Setup Guide
 
-> Riferimento per il progetto Tricorder Deck  
-> Testato su KiCad 7.x / 8.x
-
 ---
 
 ## Struttura directory consigliata
@@ -276,27 +273,27 @@ chmod +x setup-kicad-libs.sh
 
 ## 11. Riepilogo copertura BOM
 
-| Componente      | Sorgente             | Metodo        |
-| :-------------- | :------------------- | :------------ |
-| ESP32-S3-WROOM-2| repo Espressif       | git clone     |
-| BME680          | SamacSys plugin      | search in-IDE |
-| ICM-42688-P     | SamacSys plugin      | search in-IDE |
-| LIS3MDL         | st.com / repo STM    | download / clone |
-| AS7341          | SamacSys plugin      | search in-IDE |
-| VEML6075        | SamacSys plugin      | search in-IDE |
-| SCD41           | KiCad built-in / SnapEDA    | symbol chooser / download |
-| SEN55           | SnapEDA / SparkFun repo     | download / git clone      |
-| SEN0322         | SamacSys / SnapEDA   | search in-IDE |
-| MICS-6814       | SamacSys / SnapEDA   | search in-IDE |
-| SPEC-O3         | connettore manuale   | 5 min         |
-| TDS probe       | connettore manuale   | 5 min         |
-| u-blox M10      | u-blox.com / SparkFun| download      |
-| WM8960          | SamacSys plugin      | search in-IDE |
-| INMP441         | SamacSys plugin      | search in-IDE |
-| BQ25895         | SamacSys plugin      | search in-IDE |
-| MAX17048        | SamacSys plugin      | search in-IDE |
-| MCP23017        | SamacSys plugin      | search in-IDE |
-| OV2640          | SamacSys plugin      | search in-IDE |
-| BB Q10 keyboard | simbolo manuale      | 10 min        |
-| Waveshare 3.7"  | connettore FPC built-in | già in KiCad |
-| AP2112K         | SamacSys plugin      | search in-IDE |
+| Componente       | Sorgente                 | Metodo                    |
+| :--------------- | :----------------------- | :------------------------ |
+| ESP32-S3-WROOM-2 | repo Espressif           | git clone                 |
+| BME680           | SamacSys plugin          | search in-IDE             |
+| ICM-42688-P      | SamacSys plugin          | search in-IDE             |
+| LIS3MDL          | st.com / repo STM        | download / clone          |
+| AS7341           | SamacSys plugin          | search in-IDE             |
+| VEML6075         | SamacSys plugin          | search in-IDE             |
+| SCD41            | KiCad built-in / SnapEDA | symbol chooser / download |
+| SEN55            | SnapEDA / SparkFun repo  | download / git clone      |
+| SEN0322          | SamacSys / SnapEDA       | search in-IDE             |
+| MICS-6814        | SamacSys / SnapEDA       | search in-IDE             |
+| SPEC-O3          | connettore manuale       | 5 min                     |
+| TDS probe        | connettore manuale       | 5 min                     |
+| u-blox M10       | u-blox.com / SparkFun    | download                  |
+| WM8960           | SamacSys plugin          | search in-IDE             |
+| INMP441          | SamacSys plugin          | search in-IDE             |
+| BQ25895          | SamacSys plugin          | search in-IDE             |
+| MAX17048         | SamacSys plugin          | search in-IDE             |
+| MCP23017         | SamacSys plugin          | search in-IDE             |
+| OV2640           | SamacSys plugin          | search in-IDE             |
+| BB Q10 keyboard  | simbolo manuale          | 10 min                    |
+| Waveshare 3.7"   | connettore FPC built-in  | già in KiCad              |
+| AP2112K          | SamacSys plugin          | search in-IDE             |
