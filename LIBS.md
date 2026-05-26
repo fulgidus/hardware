@@ -70,30 +70,40 @@ Preferences → Manage Footprint Libraries → Add Existing Library
 
 ## 3. Sensirion — SCD41, SEN55
 
+Sensirion **non ha un repo KiCad pubblico su GitHub**.
+Le fonti reali, in ordine di comodità:
+
+### Opzione A — KiCad official libraries (già installate)
+
+SCD41 è stato mergiato nelle librerie ufficiali KiCad (MR !3432).
+Se hai KiCad 7+ aggiornato, potrebbe essere già presente:
+
+```
+KiCad Symbol Chooser → cerca "SCD41"
+→ se compare sotto Sensor_Gas: zero download necessari
+```
+
+### Opzione B — SnapEDA / SnapMagic (download diretto)
+
+```
+SCD41 : https://www.snapeda.com/parts/SCD41-D-R2/Sensirion/view-part/
+SEN55 : https://www.snapeda.com/parts/SEN55-SDN-T/Sensirion/view-part/
+
+→ Download → KiCad 7
+→ KiCad → File → Import → KiCad Symbol
+```
+
+### Opzione C — SparkFun hardware repo (SCD41 + SEN55 insieme)
+
+SparkFun ha un breakout combo con KiCad files pubblici, utile
+come riferimento per footprint e schema di connessione:
+
 ```bash
 cd ~/kicad-libs
-git clone https://github.com/Sensirion/kicad-library sensirion
-```
-
-Struttura repo:
-
-```
-sensirion/
-├── SCD4x/
-│   ├── SCD41.kicad_sym
-│   └── SCD41.kicad_mod
-├── SEN5x/
-│   ├── SEN55.kicad_sym
-│   └── SEN55.kicad_mod
-└── ...
-```
-
-Aggiungi ogni `.kicad_sym` come libreria separata, oppure consolida:
-
-```
-Preferences → Manage Symbol Libraries → Add Existing Library
-→ ~/kicad-libs/sensirion/SCD4x/SCD41.kicad_sym
-→ ~/kicad-libs/sensirion/SEN5x/SEN55.kicad_sym
+git clone --depth=1 \
+  https://github.com/sparkfun/SparkFun_Indoor_Air_Quality_Sensor-SCD41-SEN55 \
+  sparkfun-sen55
+# file KiCad in Hardware/
 ```
 
 ---
@@ -234,10 +244,10 @@ git clone --depth=1 \
   https://github.com/espressif/kicad-libraries \
   "${LIBS_DIR}/espressif"
 
-echo "→ Sensirion (SCD41, SEN55)"
+echo "→ SparkFun SCD41+SEN55 reference (Sensirion non ha repo KiCad ufficiale)"
 git clone --depth=1 \
-  https://github.com/Sensirion/kicad-library \
-  "${LIBS_DIR}/sensirion"
+  https://github.com/sparkfun/SparkFun_Indoor_Air_Quality_Sensor-SCD41-SEN55 \
+  "${LIBS_DIR}/sparkfun-sen55"
 
 echo "→ SparkFun (u-blox M10 alternativa)"
 git clone --depth=1 \
@@ -274,8 +284,8 @@ chmod +x setup-kicad-libs.sh
 | LIS3MDL         | st.com / repo STM    | download / clone |
 | AS7341          | SamacSys plugin      | search in-IDE |
 | VEML6075        | SamacSys plugin      | search in-IDE |
-| SCD41           | repo Sensirion       | git clone     |
-| SEN55           | repo Sensirion       | git clone     |
+| SCD41           | KiCad built-in / SnapEDA    | symbol chooser / download |
+| SEN55           | SnapEDA / SparkFun repo     | download / git clone      |
 | SEN0322         | SamacSys / SnapEDA   | search in-IDE |
 | MICS-6814       | SamacSys / SnapEDA   | search in-IDE |
 | SPEC-O3         | connettore manuale   | 5 min         |
