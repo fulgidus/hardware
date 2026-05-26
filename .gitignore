@@ -5,3 +5,5 @@
 *.lock
 .history/
 temp-freerouting.dsn
+
+kit.yml
