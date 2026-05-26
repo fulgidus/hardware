@@ -1,5 +1,6 @@
+.pi/gsd
+
 *.lck
-.pi/*
 *.lock.json
 *.lock
 .history/
