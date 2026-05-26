@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Earring Schematic — RGB Analogico</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0d1117;
+    color: #c9d1d9;
+    font-family: system-ui, -apple-system, sans-serif;
+    padding: 24px;
+  }
+  h1 { color: #8be9fd; font-size: 1.5em; margin-bottom: 4px; }
+  .subtitle { color: #6272a4; font-size: 0.9em; margin-bottom: 24px; }
+  .schematic-wrap {
+    background: #161b27;
+    border: 1px solid #21262d;
+    border-radius: 10px;
+    padding: 20px;
+    overflow-x: auto;
+  }
+  svg text { font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace; }
+  .legend {
+    display: flex; gap: 20px; flex-wrap: wrap;
+    margin-top: 20px; font-size: 0.85em;
+  }
+  .legend-item { display: flex; align-items: center; gap: 8px; }
+  .legend-dot { width: 14px; height: 14px; border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<h1>🔴🟢🔵 Earring Schematic — RGB Analogico</h1>
+<p class="subtitle">Puro analogico · no MCU · CD4069UB + 3× 2N7002 · LiPo 30 mAh · Reed switch + LDR dimming</p>
+
+<div class="schematic-wrap">
+<svg viewBox="0 0 1320 880" width="1320" height="880" style="display:block;">
+  <defs>
+    <!-- Arrowhead -->
+    <marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#8b949e"/>
+    </marker>
+    <!-- VCC symbol -->
+    <symbol id="vcc" viewBox="0 0 20 24">
+      <line x1="10" y1="20" x2="10" y2="6" stroke="#ff9944" stroke-width="1.5"/>
+      <line x1="4"  y1="6"  x2="16" y2="6"  stroke="#ff9944" stroke-width="2"/>
+    </symbol>
+    <!-- GND symbol -->
+    <symbol id="gnd" viewBox="0 0 20 20">
+      <line x1="10" y1="0"  x2="10" y2="10" stroke="#6272a4" stroke-width="1.5"/>
+      <line x1="2"  y1="10" x2="18" y2="10" stroke="#6272a4" stroke-width="2"/>
+      <line x1="5"  y1="13" x2="15" y2="13" stroke="#6272a4" stroke-width="1.5"/>
+      <line x1="8"  y1="16" x2="12" y2="16" stroke="#6272a4" stroke-width="1.2"/>
+    </symbol>
+  </defs>
+
+  <!-- ══════════════════════════════════════════════════ BACKGROUND REGIONS -->
+  <rect x="8"    y="8"   width="304" height="862" rx="6" fill="#1a1f2e" stroke="#2a3050" stroke-width="1"/>
+  <rect x="322"  y="8"   width="988" height="270" rx="6" fill="#1f1a1a" stroke="#50242a" stroke-width="1"/>
+  <rect x="322"  y="292" width="988" height="270" rx="6" fill="#1a1f1a" stroke="#245024" stroke-width="1"/>
+  <rect x="322"  y="576" width="988" height="294" rx="6" fill="#1a1a2a" stroke="#24245a" stroke-width="1"/>
+
+  <!-- Section labels -->
+  <text x="160"  y="32" text-anchor="middle" fill="#ffb86c" font-size="13" font-weight="bold">⚡ POWER</text>
+  <text x="816"  y="32" text-anchor="middle" fill="#ff8080" font-size="13" font-weight="bold">🔴 CANALE ROSSO  (T ≈ 102 s)</text>
+  <text x="816" y="316" text-anchor="middle" fill="#80ff80" font-size="13" font-weight="bold">🟢 CANALE VERDE  (T ≈ 152 s)</text>
+  <text x="816" y="600" text-anchor="middle" fill="#8080ff" font-size="13" font-weight="bold">🔵 CANALE BLU   (T ≈ 217 s)</text>
+
+  <!-- ══════════════════════════════════════════════════ POWER SECTION -->
+
+  <!-- VBATT horizontal rail -->
+  <line x1="30" y1="90" x2="300" y2="90" stroke="#ff9944" stroke-width="2.5"/>
+  <text x="22" y="87" fill="#ff9944" font-size="10" font-weight="bold">VBATT</text>
+
+  <!-- GND horizontal rail -->
+  <line x1="30" y1="830" x2="300" y2="830" stroke="#6272a4" stroke-width="2.5"/>
+  <text x="22" y="827" fill="#6272a4" font-size="10" font-weight="bold">GND</text>
+
+  <!-- POGO connectors -->
+  <circle cx="42" cy="90" r="5" fill="none" stroke="#8be9fd" stroke-width="1.5"/>
+  <text x="50" y="86" fill="#8be9fd" font-size="9">POGO BAT+</text>
+  <circle cx="42" cy="830" r="5" fill="none" stroke="#8be9fd" stroke-width="1.5"/>
+  <text x="50" y="826" fill="#8be9fd" font-size="9">POGO GND</text>
+
+  <!-- LiPo J1 -->
+  <rect x="70" y="160" width="60" height="80" rx="4" fill="none" stroke="#8be9fd" stroke-width="1.5"/>
+  <text x="100" y="185" text-anchor="middle" fill="#8be9fd" font-size="10" font-weight="bold">J1</text>
+  <text x="100" y="200" text-anchor="middle" fill="#8be9fd" font-size="9">LiPo</text>
+  <text x="100" y="213" text-anchor="middle" fill="#8be9fd" font-size="9">30mAh</text>
+  <text x="100" y="226" text-anchor="middle" fill="#6272a4" font-size="8">+  −</text>
+  <!-- J1 BAT+ wire to VBATT -->
+  <line x1="100" y1="160" x2="100" y2="90" stroke="#ff9944" stroke-width="1.5"/>
+  <!-- J1 GND wire to GND rail -->
+  <line x1="100" y1="240" x2="100" y2="830" stroke="#6272a4" stroke-width="1.5"/>
+
+  <!-- ── REED SWITCH SW1 ── VBATT → GATE_P (normally open) -->
+  <!-- Vertical wire from VBATT down to switch -->
+  <line x1="175" y1="90" x2="175" y2="150" stroke="#ff9944" stroke-width="1.5"/>
+  <!-- Contact dot 1 -->
+  <circle cx="175" cy="155" r="3" fill="#aaa"/>
+  <!-- NO contact arc (tilted line) -->
+  <line x1="175" y1="158" x2="200" y2="145" stroke="#aaa" stroke-width="1.5"/>
+  <!-- Contact dot 2 -->
+  <circle cx="200" cy="180" r="3" fill="#aaa"/>
+  <!-- Actuator (dashed = magnetic) -->
+  <line x1="175" y1="158" x2="175" y2="180" stroke="#aaa" stroke-width="1" stroke-dasharray="3,2"/>
+  <line x1="200" y1="183" x2="200" y2="250" stroke="#aaa" stroke-width="1.5"/>
+  <!-- Label -->
+  <text x="207" y="155" fill="#aaa" font-size="9" font-weight="bold">SW1</text>
+  <text x="207" y="167" fill="#6272a4" font-size="8">Reed NO</text>
+  <text x="207" y="179" fill="#6272a4" font-size="8">VBATT→GATE_P</text>
+
+  <!-- ── R1 100kΩ ── VBATT → GATE_P (parallel to SW1) -->
+  <line x1="248" y1="90" x2="248" y2="140" stroke="#ff9944" stroke-width="1.5"/>
+  <rect x="236" y="140" width="24" height="44" rx="2" fill="none" stroke="#aaa" stroke-width="1.5"/>
+  <text x="248" y="158" text-anchor="middle" fill="#aaa" font-size="8">R1</text>
+  <text x="248" y="170" text-anchor="middle" fill="#aaa" font-size="8">100k</text>
+  <line x1="248" y1="184" x2="248" y2="250" stroke="#aaa" stroke-width="1.5"/>
+
+  <!-- GATE_P node: junction of SW1, R1, LDR, Q1 gate -->
+  <line x1="200" y1="250" x2="248" y2="250" stroke="#bd93f9" stroke-width="1.5"/>
+  <circle cx="224" cy="250" r="4" fill="#bd93f9"/>
+  <text x="228" y="244" fill="#bd93f9" font-size="9" font-weight="bold">GATE_P</text>
+
+  <!-- ── LDR1 GL5528 ── GATE_P → GND -->
+  <line x1="224" y1="254" x2="224" y2="304" stroke="#bd93f9" stroke-width="1.5"/>
+  <!-- LDR symbol: resistor box + arrows (light) -->
+  <rect x="212" y="304" width="24" height="44" rx="2" fill="none" stroke="#ffb86c" stroke-width="1.5"/>
+  <text x="224" y="322" text-anchor="middle" fill="#ffb86c" font-size="8">LDR1</text>
+  <text x="224" y="334" text-anchor="middle" fill="#ffb86c" font-size="7">GL5528</text>
+  <!-- Light arrows -->
+  <line x1="238" y1="310" x2="250" y2="298" stroke="#ffb86c" stroke-width="1" marker-end="url(#arr)"/>
+  <line x1="238" y1="322" x2="250" y2="310" stroke="#ffb86c" stroke-width="1" marker-end="url(#arr)"/>
+  <line x1="224" y1="348" x2="224" y2="830" stroke="#6272a4" stroke-width="1.5"/>
+
+  <!-- ── Q1 PMOS SI2313BDS ── S=VBATT, G=GATE_P, D=VCC -->
+  <!-- PMOS symbol (simplified): -->
+  <!-- Body vertical bar -->
+  <line x1="270" y1="120" x2="270" y2="230" stroke="#50fa7b" stroke-width="2"/>
+  <!-- Gate horizontal -->
+  <line x1="248" y1="175" x2="260" y2="175" stroke="#50fa7b" stroke-width="1.5"/>
+  <!-- Gate-body gap (insulated) -->
+  <line x1="262" y1="145" x2="262" y2="210" stroke="#50fa7b" stroke-width="2"/>
+  <!-- Source stub (top = S for PMOS shown with arrow pointing IN) -->
+  <line x1="262" y1="150" x2="270" y2="150" stroke="#50fa7b" stroke-width="1.5"/>
+  <!-- Source arrow (pointing toward body = P-channel) -->
+  <polygon points="262,150 268,146 268,154" fill="#50fa7b"/>
+  <!-- Drain stub (bottom) -->
+  <line x1="262" y1="205" x2="270" y2="205" stroke="#50fa7b" stroke-width="1.5"/>
+  <!-- Source wire up to VBATT -->
+  <line x1="270" y1="120" x2="270" y2="90" stroke="#ff9944" stroke-width="1.5"/>
+  <!-- Gate wire to GATE_P -->
+  <line x1="248" y1="250" x2="248" y2="175" stroke="#bd93f9" stroke-width="1.5"/>
+  <!-- Drain wire down to VCC rail (at x=300) -->
+  <line x1="270" y1="205" x2="300" y2="205" stroke="#50fa7b" stroke-width="1.5"/>
+  <text x="276" y="172" fill="#50fa7b" font-size="8" font-weight="bold">Q1</text>
+  <text x="276" y="183" fill="#50fa7b" font-size="7">PMOS</text>
+  <text x="276" y="193" fill="#50fa7b" font-size="7">SI2313</text>
+
+  <!-- VCC vertical rail (right edge of power section, feeds channels) -->
+  <line x1="300" y1="205" x2="300" y2="870" stroke="#50fa7b" stroke-width="2.5" stroke-dasharray="6,3"/>
+  <text x="288" y="102" fill="#50fa7b" font-size="10" font-weight="bold">VCC</text>
+  <!-- VCC connects to VBATT also via Q1, already drawn -->
+
+  <!-- C1 100nF decoupling: VCC → GND -->
+  <line x1="300" y1="440" x2="286" y2="440" stroke="#50fa7b" stroke-width="1.5"/>
+  <line x1="280" y1="430" x2="280" y2="450" stroke="#aaa" stroke-width="2"/>
+  <line x1="276" y1="435" x2="276" y2="445" stroke="#aaa" stroke-width="2"/>
+  <line x1="276" y1="440" x2="230" y2="440" stroke="#6272a4" stroke-width="1.5"/>
+  <line x1="230" y1="440" x2="230" y2="830" stroke="#6272a4" stroke-width="1.5"/>
+  <text x="258" y="427" text-anchor="middle" fill="#aaa" font-size="8">C1  100n</text>
+
+  <!-- U1 CD4069 power pins label -->
+  <rect x="30" y="740" width="140" height="50" rx="3" fill="#1e2533" stroke="#444" stroke-width="1"/>
+  <text x="100" y="760" text-anchor="middle" fill="#aaa" font-size="9" font-weight="bold">U1 CD4069UB</text>
+  <text x="100" y="773" text-anchor="middle" fill="#6272a4" font-size="8">pin14 = VCC</text>
+  <text x="100" y="784" text-anchor="middle" fill="#6272a4" font-size="8">pin7  = GND</text>
+
+  <!-- ══════════════════════════════════════════════════ CHANNEL MACRO (×3)
+       Each channel: OSC input → Inverter gate → OSC output
+                     → R_smooth → GATE_x (with C_smooth to GND)
+                     → NMOS Q → LED + R_limit
+       Rows: Red y=143, Green y=420, Blue y=700                            -->
+
+  <!-- ────────────── helper values ─────────────────────────────────────── -->
+  <!-- VCC tap x for each channel -->
+  <!-- Osc area: x 340–700  |  Smooth area: x 710–870  |  Driver: x 880–1290 -->
+
+  <!-- ═══ CHANNEL MACRO — Red (y_mid = 143) ══════════════════════════════ -->
+  <!-- VCC tap to oscillator -->
+  <line x1="300" y1="143" x2="370" y2="143" stroke="#50fa7b" stroke-width="1.5"/>
+
+  <!-- OSCILLATOR RED -->
+  <!-- R2 (2.2MΩ) feedback: from OSC_R_OUT back to OSC_R_IN (horizontal) -->
+  <!-- Node OSC_R_IN at (430, 143), OSC_R_OUT at (560, 143) -->
+  <!-- C2 33µF from OSC_R_IN to GND (vertical) -->
+
+  <!-- Wire from VCC to OSC_R_IN junction -->
+  <line x1="370" y1="143" x2="430" y2="143" stroke="#aaa" stroke-width="1.5"/>
+
+  <!-- OSC_R_IN node dot -->
+  <circle cx="430" cy="143" r="3.5" fill="#ff8080"/>
+  <text x="423" y="132" fill="#ff8080" font-size="8">OSC_R_IN</text>
+
+  <!-- C2 33µF: OSC_R_IN → GND -->
+  <line x1="430" y1="143" x2="430" y2="163" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="418" y1="163" x2="442" y2="163" stroke="#aaa" stroke-width="2"/>
+  <line x1="418" y1="168" x2="442" y2="168" stroke="#aaa" stroke-width="2"/>
+  <line x1="430" y1="168" x2="430" y2="220" stroke="#6272a4" stroke-width="1.5"/>
+  <line x1="430" y1="220" x2="430" y2="262" stroke="#6272a4" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="446" y="162" fill="#aaa" font-size="8">C2</text>
+  <text x="446" y="172" fill="#aaa" font-size="8">33µF</text>
+  <text x="446" y="183" fill="#6272a4" font-size="7">pol+</text>
+
+  <!-- U1A NOT gate symbol -->
+  <line x1="430" y1="143" x2="478" y2="143" stroke="#aaa" stroke-width="1.5"/>
+  <polygon points="478,125 510,143 478,161" fill="none" stroke="#ff8080" stroke-width="2"/>
+  <circle cx="515" cy="143" r="5" fill="none" stroke="#ff8080" stroke-width="2"/>
+  <text x="488" y="140" fill="#ff8080" font-size="8" font-weight="bold">U1A</text>
+  <line x1="520" y1="143" x2="560" y2="143" stroke="#aaa" stroke-width="1.5"/>
+
+  <!-- OSC_R_OUT node -->
+  <circle cx="560" cy="143" r="3.5" fill="#ff8080"/>
+  <text x="563" y="132" fill="#ff8080" font-size="8">OSC_R_OUT</text>
+
+  <!-- R2 feedback: OSC_R_OUT → (above) → back to OSC_R_IN -->
+  <line x1="560" y1="143" x2="560" y2="100" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="560" y1="100" x2="494" y2="100" stroke="#aaa" stroke-width="1.5"/>
+  <!-- R2 box on the top wire -->
+  <rect x="454" y="92" width="32" height="16" rx="2" fill="none" stroke="#aaa" stroke-width="1.5"/>
+  <text x="470" y="102" text-anchor="middle" fill="#aaa" font-size="8">R2</text>
+  <line x1="454" y1="100" x2="430" y2="100" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="430" y1="100" x2="430" y2="143" stroke="#aaa" stroke-width="1.5"/>
+  <text x="456" y="86" fill="#aaa" font-size="8">2.2MΩ</text>
+
+  <!-- SMOOTHER RED: OSC_R_OUT → R3(220k) → GATE_R(with C3 to GND) -->
+  <line x1="560" y1="143" x2="620" y2="143" stroke="#aaa" stroke-width="1.5"/>
+  <!-- R3 box -->
+  <rect x="620" y="135" width="32" height="16" rx="2" fill="none" stroke="#aaa" stroke-width="1.5"/>
+  <text x="636" y="145" text-anchor="middle" fill="#aaa" font-size="8">R3</text>
+  <line x1="652" y1="143" x2="710" y2="143" stroke="#aaa" stroke-width="1.5"/>
+  <text x="622" y="128" fill="#aaa" font-size="8">220kΩ</text>
+
+  <!-- GATE_R node -->
+  <circle cx="710" cy="143" r="3.5" fill="#ff8080"/>
+  <text x="714" y="132" fill="#ff8080" font-size="8" font-weight="bold">GATE_R</text>
+
+  <!-- C3 47µF: GATE_R → GND -->
+  <line x1="710" y1="143" x2="710" y2="163" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="698" y1="163" x2="722" y2="163" stroke="#aaa" stroke-width="2"/>
+  <line x1="698" y1="168" x2="722" y2="168" stroke="#aaa" stroke-width="2"/>
+  <line x1="710" y1="168" x2="710" y2="230" stroke="#6272a4" stroke-width="1.5"/>
+  <text x="726" y="162" fill="#aaa" font-size="8">C3</text>
+  <text x="726" y="172" fill="#aaa" font-size="8">47µF</text>
+
+  <!-- LED DRIVER RED: Q2 (NMOS), R4 (150Ω), D1 (LED Red) -->
+  <!-- NMOS Q2 symbol -->
+  <!-- Gate wire from GATE_R to Q2 gate -->
+  <line x1="710" y1="143" x2="770" y2="143" stroke="#aaa" stroke-width="1.5"/>
+
+  <!-- Q2 NMOS: Gate at (770,143), Drain at (800,110), Source at (800,176) -->
+  <line x1="800" y1="90" x2="800" y2="200" stroke="#ff8080" stroke-width="2"/>
+  <line x1="770" y1="143" x2="790" y2="143" stroke="#ff8080" stroke-width="1.5"/>
+  <line x1="792" y1="112" x2="792" y2="174" stroke="#ff8080" stroke-width="2"/>
+  <line x1="792" y1="118" x2="800" y2="118" stroke="#ff8080" stroke-width="1.5"/>
+  <!-- Arrow toward body = N-channel -->
+  <polygon points="798,118 792,114 792,122" fill="#ff8080"/>
+  <line x1="792" y1="168" x2="800" y2="168" stroke="#ff8080" stroke-width="1.5"/>
+  <!-- Source wire to GND -->
+  <line x1="800" y1="200" x2="800" y2="230" stroke="#6272a4" stroke-width="1.5"/>
+  <text x="805" y="140" fill="#ff8080" font-size="8" font-weight="bold">Q2</text>
+  <text x="805" y="150" fill="#ff8080" font-size="7">2N7002</text>
+  <!-- Drain wire up to LED -->
+  <line x1="800" y1="90" x2="800" y2="68" stroke="#aaa" stroke-width="1.5"/>
+
+  <!-- D1 LED Red: Anode top, Cathode bottom (cathode → Q2 drain) -->
+  <!-- LED symbol (pointing down: current flows down) -->
+  <polygon points="800,52 786,68 814,68" fill="none" stroke="#ff5555" stroke-width="1.5"/>
+  <line x1="786" y1="52" x2="814" y2="52" stroke="#ff5555" stroke-width="1.5"/>
+  <!-- Light rays -->
+  <line x1="818" y1="58" x2="828" y2="50" stroke="#ff5555" stroke-width="1" marker-end="url(#arr)"/>
+  <line x1="818" y1="65" x2="828" y2="57" stroke="#ff5555" stroke-width="1" marker-end="url(#arr)"/>
+  <text x="834" y="62" fill="#ff5555" font-size="8" font-weight="bold">D1 LED RED</text>
+  <!-- Anode wire up to R4 -->
+  <line x1="800" y1="52" x2="800" y2="30" stroke="#aaa" stroke-width="1.5"/>
+
+  <!-- R4 150Ω: VCC → LED anode -->
+  <rect x="784" y="20" width="32" height="14" rx="2" fill="none" stroke="#aaa" stroke-width="1.5"/>
+  <text x="800" y="30" text-anchor="middle" fill="#aaa" font-size="8">R4  150Ω</text>
+  <!-- R4 top wire to VCC -->
+  <line x1="800" y1="20" x2="800" y2="14" stroke="#50fa7b" stroke-width="1.5"/>
+  <line x1="800" y1="14" x2="300" y2="14" stroke="#50fa7b" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="548" y="11" fill="#50fa7b" font-size="8">VCC</text>
+
+  <!-- ═══ CHANNEL MACRO — Green (y_mid = 420) ════════════════════════════ -->
+  <line x1="300" y1="420" x2="370" y2="420" stroke="#50fa7b" stroke-width="1.5"/>
+  <line x1="370" y1="420" x2="430" y2="420" stroke="#aaa" stroke-width="1.5"/>
+  <circle cx="430" cy="420" r="3.5" fill="#80ff80"/>
+  <text x="423" y="409" fill="#80ff80" font-size="8">OSC_G_IN</text>
+
+  <!-- C4 33µF -->
+  <line x1="430" y1="420" x2="430" y2="440" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="418" y1="440" x2="442" y2="440" stroke="#aaa" stroke-width="2"/>
+  <line x1="418" y1="445" x2="442" y2="445" stroke="#aaa" stroke-width="2"/>
+  <line x1="430" y1="445" x2="430" y2="540" stroke="#6272a4" stroke-width="1.5"/>
+  <text x="446" y="439" fill="#aaa" font-size="8">C4  33µF</text>
+
+  <!-- U1B NOT -->
+  <line x1="430" y1="420" x2="478" y2="420" stroke="#aaa" stroke-width="1.5"/>
+  <polygon points="478,402 510,420 478,438" fill="none" stroke="#80ff80" stroke-width="2"/>
+  <circle cx="515" cy="420" r="5" fill="none" stroke="#80ff80" stroke-width="2"/>
+  <text x="488" y="417" fill="#80ff80" font-size="8" font-weight="bold">U1B</text>
+  <line x1="520" y1="420" x2="560" y2="420" stroke="#aaa" stroke-width="1.5"/>
+  <circle cx="560" cy="420" r="3.5" fill="#80ff80"/>
+  <text x="563" y="409" fill="#80ff80" font-size="8">OSC_G_OUT</text>
+
+  <!-- R5 3.3MΩ feedback -->
+  <line x1="560" y1="420" x2="560" y2="378" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="560" y1="378" x2="494" y2="378" stroke="#aaa" stroke-width="1.5"/>
+  <rect x="454" y="370" width="32" height="16" rx="2" fill="none" stroke="#aaa" stroke-width="1.5"/>
+  <text x="470" y="380" text-anchor="middle" fill="#aaa" font-size="8">R5</text>
+  <line x1="454" y1="378" x2="430" y2="378" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="430" y1="378" x2="430" y2="420" stroke="#aaa" stroke-width="1.5"/>
+  <text x="456" y="365" fill="#aaa" font-size="8">3.3MΩ</text>
+
+  <!-- R6 220k smoother -->
+  <line x1="560" y1="420" x2="620" y2="420" stroke="#aaa" stroke-width="1.5"/>
+  <rect x="620" y="412" width="32" height="16" rx="2" fill="none" stroke="#aaa" stroke-width="1.5"/>
+  <text x="636" y="422" text-anchor="middle" fill="#aaa" font-size="8">R6</text>
+  <line x1="652" y1="420" x2="710" y2="420" stroke="#aaa" stroke-width="1.5"/>
+  <text x="622" y="407" fill="#aaa" font-size="8">220kΩ</text>
+  <circle cx="710" cy="420" r="3.5" fill="#80ff80"/>
+  <text x="714" y="409" fill="#80ff80" font-size="8" font-weight="bold">GATE_G</text>
+
+  <!-- C5 47µF -->
+  <line x1="710" y1="420" x2="710" y2="440" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="698" y1="440" x2="722" y2="440" stroke="#aaa" stroke-width="2"/>
+  <line x1="698" y1="445" x2="722" y2="445" stroke="#aaa" stroke-width="2"/>
+  <line x1="710" y1="445" x2="710" y2="540" stroke="#6272a4" stroke-width="1.5"/>
+  <text x="726" y="439" fill="#aaa" font-size="8">C5  47µF</text>
+
+  <!-- Q3 NMOS Green -->
+  <line x1="710" y1="420" x2="770" y2="420" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="800" y1="366" x2="800" y2="476" stroke="#80ff80" stroke-width="2"/>
+  <line x1="770" y1="420" x2="790" y2="420" stroke="#80ff80" stroke-width="1.5"/>
+  <line x1="792" y1="389" x2="792" y2="451" stroke="#80ff80" stroke-width="2"/>
+  <line x1="792" y1="395" x2="800" y2="395" stroke="#80ff80" stroke-width="1.5"/>
+  <polygon points="798,395 792,391 792,399" fill="#80ff80"/>
+  <line x1="792" y1="445" x2="800" y2="445" stroke="#80ff80" stroke-width="1.5"/>
+  <line x1="800" y1="476" x2="800" y2="510" stroke="#6272a4" stroke-width="1.5"/>
+  <text x="805" y="417" fill="#80ff80" font-size="8" font-weight="bold">Q3</text>
+  <text x="805" y="427" fill="#80ff80" font-size="7">2N7002</text>
+  <!-- Drain up to LED -->
+  <line x1="800" y1="366" x2="800" y2="344" stroke="#aaa" stroke-width="1.5"/>
+
+  <!-- D2 LED Green -->
+  <polygon points="800,328 786,344 814,344" fill="none" stroke="#50fa7b" stroke-width="1.5"/>
+  <line x1="786" y1="328" x2="814" y2="328" stroke="#50fa7b" stroke-width="1.5"/>
+  <line x1="818" y1="334" x2="828" y2="326" stroke="#50fa7b" stroke-width="1" marker-end="url(#arr)"/>
+  <line x1="818" y1="341" x2="828" y2="333" stroke="#50fa7b" stroke-width="1" marker-end="url(#arr)"/>
+  <text x="834" y="338" fill="#50fa7b" font-size="8" font-weight="bold">D2 LED GRN</text>
+  <line x1="800" y1="328" x2="800" y2="306" stroke="#aaa" stroke-width="1.5"/>
+
+  <!-- R7 47Ω -->
+  <rect x="784" y="296" width="32" height="14" rx="2" fill="none" stroke="#aaa" stroke-width="1.5"/>
+  <text x="800" y="306" text-anchor="middle" fill="#aaa" font-size="8">R7  47Ω</text>
+  <line x1="800" y1="296" x2="800" y2="290" stroke="#50fa7b" stroke-width="1.5"/>
+  <line x1="800" y1="290" x2="300" y2="290" stroke="#50fa7b" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="548" y="287" fill="#50fa7b" font-size="8">VCC</text>
+
+  <!-- ═══ CHANNEL MACRO — Blue (y_mid = 700) ═════════════════════════════ -->
+  <line x1="300" y1="700" x2="370" y2="700" stroke="#50fa7b" stroke-width="1.5"/>
+  <line x1="370" y1="700" x2="430" y2="700" stroke="#aaa" stroke-width="1.5"/>
+  <circle cx="430" cy="700" r="3.5" fill="#8080ff"/>
+  <text x="423" y="689" fill="#8080ff" font-size="8">OSC_B_IN</text>
+
+  <!-- C6 33µF -->
+  <line x1="430" y1="700" x2="430" y2="720" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="418" y1="720" x2="442" y2="720" stroke="#aaa" stroke-width="2"/>
+  <line x1="418" y1="725" x2="442" y2="725" stroke="#aaa" stroke-width="2"/>
+  <line x1="430" y1="725" x2="430" y2="820" stroke="#6272a4" stroke-width="1.5"/>
+  <text x="446" y="719" fill="#aaa" font-size="8">C6  33µF</text>
+
+  <!-- U1C NOT -->
+  <line x1="430" y1="700" x2="478" y2="700" stroke="#aaa" stroke-width="1.5"/>
+  <polygon points="478,682 510,700 478,718" fill="none" stroke="#8080ff" stroke-width="2"/>
+  <circle cx="515" cy="700" r="5" fill="none" stroke="#8080ff" stroke-width="2"/>
+  <text x="488" y="697" fill="#8080ff" font-size="8" font-weight="bold">U1C</text>
+  <line x1="520" y1="700" x2="560" y2="700" stroke="#aaa" stroke-width="1.5"/>
+  <circle cx="560" cy="700" r="3.5" fill="#8080ff"/>
+  <text x="563" y="689" fill="#8080ff" font-size="8">OSC_B_OUT</text>
+
+  <!-- R8 4.7MΩ feedback -->
+  <line x1="560" y1="700" x2="560" y2="658" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="560" y1="658" x2="494" y2="658" stroke="#aaa" stroke-width="1.5"/>
+  <rect x="454" y="650" width="32" height="16" rx="2" fill="none" stroke="#aaa" stroke-width="1.5"/>
+  <text x="470" y="660" text-anchor="middle" fill="#aaa" font-size="8">R8</text>
+  <line x1="454" y1="658" x2="430" y2="658" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="430" y1="658" x2="430" y2="700" stroke="#aaa" stroke-width="1.5"/>
+  <text x="456" y="645" fill="#aaa" font-size="8">4.7MΩ</text>
+
+  <!-- R9 220k smoother -->
+  <line x1="560" y1="700" x2="620" y2="700" stroke="#aaa" stroke-width="1.5"/>
+  <rect x="620" y="692" width="32" height="16" rx="2" fill="none" stroke="#aaa" stroke-width="1.5"/>
+  <text x="636" y="702" text-anchor="middle" fill="#aaa" font-size="8">R9</text>
+  <line x1="652" y1="700" x2="710" y2="700" stroke="#aaa" stroke-width="1.5"/>
+  <text x="622" y="687" fill="#aaa" font-size="8">220kΩ</text>
+  <circle cx="710" cy="700" r="3.5" fill="#8080ff"/>
+  <text x="714" y="689" fill="#8080ff" font-size="8" font-weight="bold">GATE_B</text>
+
+  <!-- C7 47µF -->
+  <line x1="710" y1="700" x2="710" y2="720" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="698" y1="720" x2="722" y2="720" stroke="#aaa" stroke-width="2"/>
+  <line x1="698" y1="725" x2="722" y2="725" stroke="#aaa" stroke-width="2"/>
+  <line x1="710" y1="725" x2="710" y2="820" stroke="#6272a4" stroke-width="1.5"/>
+  <text x="726" y="719" fill="#aaa" font-size="8">C7  47µF</text>
+
+  <!-- Q4 NMOS Blue -->
+  <line x1="710" y1="700" x2="770" y2="700" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="800" y1="646" x2="800" y2="756" stroke="#8080ff" stroke-width="2"/>
+  <line x1="770" y1="700" x2="790" y2="700" stroke="#8080ff" stroke-width="1.5"/>
+  <line x1="792" y1="669" x2="792" y2="731" stroke="#8080ff" stroke-width="2"/>
+  <line x1="792" y1="675" x2="800" y2="675" stroke="#8080ff" stroke-width="1.5"/>
+  <polygon points="798,675 792,671 792,679" fill="#8080ff"/>
+  <line x1="792" y1="725" x2="800" y2="725" stroke="#8080ff" stroke-width="1.5"/>
+  <line x1="800" y1="756" x2="800" y2="800" stroke="#6272a4" stroke-width="1.5"/>
+  <text x="805" y="697" fill="#8080ff" font-size="8" font-weight="bold">Q4</text>
+  <text x="805" y="707" fill="#8080ff" font-size="7">2N7002</text>
+  <!-- Drain up to LED -->
+  <line x1="800" y1="646" x2="800" y2="624" stroke="#aaa" stroke-width="1.5"/>
+
+  <!-- D3 LED Blue -->
+  <polygon points="800,608 786,624 814,624" fill="none" stroke="#8080ff" stroke-width="1.5"/>
+  <line x1="786" y1="608" x2="814" y2="608" stroke="#8080ff" stroke-width="1.5"/>
+  <line x1="818" y1="614" x2="828" y2="606" stroke="#8080ff" stroke-width="1" marker-end="url(#arr)"/>
+  <line x1="818" y1="621" x2="828" y2="613" stroke="#8080ff" stroke-width="1" marker-end="url(#arr)"/>
+  <text x="834" y="618" fill="#8080ff" font-size="8" font-weight="bold">D3 LED BLU</text>
+  <line x1="800" y1="608" x2="800" y2="586" stroke="#aaa" stroke-width="1.5"/>
+
+  <!-- R10 47Ω -->
+  <rect x="784" y="576" width="32" height="14" rx="2" fill="none" stroke="#aaa" stroke-width="1.5"/>
+  <text x="800" y="586" text-anchor="middle" fill="#aaa" font-size="8">R10  47Ω</text>
+  <line x1="800" y1="576" x2="800" y2="570" stroke="#50fa7b" stroke-width="1.5"/>
+  <line x1="800" y1="570" x2="300" y2="570" stroke="#50fa7b" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="548" y="567" fill="#50fa7b" font-size="8">VCC</text>
+
+  <!-- ══ GND collection lines (NMOS sources + caps) join GND bus ═════════ -->
+  <!-- Red NMOS source GND -->
+  <line x1="800" y1="230" x2="870" y2="230" stroke="#6272a4" stroke-width="1.2" stroke-dasharray="3,3"/>
+  <text x="875" y="234" fill="#6272a4" font-size="8">GND</text>
+  <!-- Green NMOS source GND -->
+  <line x1="800" y1="510" x2="870" y2="510" stroke="#6272a4" stroke-width="1.2" stroke-dasharray="3,3"/>
+  <text x="875" y="514" fill="#6272a4" font-size="8">GND</text>
+  <!-- Blue NMOS source GND -->
+  <line x1="800" y1="800" x2="870" y2="800" stroke="#6272a4" stroke-width="1.2" stroke-dasharray="3,3"/>
+  <text x="875" y="804" fill="#6272a4" font-size="8">GND</text>
+
+  <!-- ══════════════════════════════════════════════════ NOTES BOX -->
+  <rect x="880" y="60" width="420" height="200" rx="5" fill="#111827" stroke="#2a3a2a" stroke-width="1"/>
+  <text x="1090" y="82" text-anchor="middle" fill="#50fa7b" font-size="11" font-weight="bold">⚡ Note operative</text>
+  <text x="892" y="102" fill="#aaa" font-size="9">• Vf LED verde/blu ≈ 2.9 V → R7/R10 = 47 Ω (non 150 Ω)</text>
+  <text x="892" y="117" fill="#aaa" font-size="9">• Vf LED rosso ≈ 2.0 V → R4 = 150 Ω @ ~2 mA</text>
+  <text x="892" y="132" fill="#aaa" font-size="9">• τ smoother ≈ 10 s (220k × 47µF) → transizioni ~30 s</text>
+  <text x="892" y="147" fill="#aaa" font-size="9">• T oscillatori: 102/152/217 s — rapporti irrazionali</text>
+  <text x="892" y="162" fill="#aaa" font-size="9">• CD4069: usare versione UB (unbuffered) per osc. lineari</text>
+  <text x="892" y="177" fill="#aaa" font-size="9">• Q1 OFF in cradle: Reed chiude → GATE_P = VBATT → Vgs=0</text>
+  <text x="892" y="192" fill="#aaa" font-size="9">• LDR: luce intensa → bassa R → GATE_P basso → Q1 full ON</text>
+  <text x="892" y="207" fill="#aaa" font-size="9">• LDR: buio → alta R → GATE_P alto → Q1 OFF / dim</text>
+  <text x="892" y="222" fill="#aaa" font-size="9">• Massa comune: tutti i GND connessi (non floating)</text>
+  <text x="892" y="240" fill="#aaa" font-size="9">• C2,C4,C6: polarità + verso oscillatore; – verso GND</text>
+
+  <!-- Net legend -->
+  <rect x="880" y="275" width="200" height="140" rx="5" fill="#111827" stroke="#333" stroke-width="1"/>
+  <text x="980" y="293" text-anchor="middle" fill="#ccc" font-size="10" font-weight="bold">Nets principali</text>
+  <line x1="892" y1="305" x2="930" y2="305" stroke="#ff9944" stroke-width="2"/>
+  <text x="936" y="309" fill="#ff9944" font-size="9">VBATT  (3.7 V LiPo)</text>
+  <line x1="892" y1="320" x2="930" y2="320" stroke="#50fa7b" stroke-width="2"/>
+  <text x="936" y="324" fill="#50fa7b" font-size="9">VCC  (post PMOS Q1)</text>
+  <line x1="892" y1="335" x2="930" y2="335" stroke="#6272a4" stroke-width="2"/>
+  <text x="936" y="339" fill="#6272a4" font-size="9">GND</text>
+  <line x1="892" y1="350" x2="930" y2="350" stroke="#bd93f9" stroke-width="2"/>
+  <text x="936" y="354" fill="#bd93f9" font-size="9">GATE_P  (ctrl PMOS)</text>
+  <line x1="892" y1="365" x2="930" y2="365" stroke="#ff8080" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="936" y="369" fill="#ff8080" font-size="9">VCC dashed = bus</text>
+  <line x1="892" y1="380" x2="930" y2="380" stroke="#6272a4" stroke-width="2" stroke-dasharray="3,3"/>
+  <text x="936" y="384" fill="#6272a4" font-size="9">GND dashed = bus</text>
+
+</svg>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#ff9944"></div><span>VBATT rail</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:#50fa7b"></div><span>VCC (post switch)</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:#6272a4"></div><span>GND rail</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:#bd93f9"></div><span>GATE_P (controllo PMOS)</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:#ff8080"></div><span>Canale Rosso</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:#80c880"></div><span>Canale Verde</span></div>
+  <div class="legend-item"><div class="legend-dot" style="background:#8080ff"></div><span>Canale Blu</span></div>
+</div>
+
+</body>
+</html>
