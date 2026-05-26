@@ -1,5 +1,9 @@
+.pi/gsd
+
 *.lck
 *.lock.json
 *.lock
 .history/
 temp-freerouting.dsn
+
+kit.yml
