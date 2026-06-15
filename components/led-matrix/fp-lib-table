@@ -1,0 +1,4 @@
+(fp_lib_table
+	(version 7)
+	(lib (name "HexTile") (type "KiCad") (uri "/home/fulgidus/Documents/hardware/libs/f-pd/HexTile.pretty") (options "") (descr ""))
+)
