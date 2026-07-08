@@ -21,7 +21,7 @@
 			(color 0 0 0 0)
 		)
 		(uuid "484916ad-1214-4f3b-8b2a-9ae7e876ba8f")
-		(property "Sheetname" "MCU"
+		(property "Sheetname" "R-Pi-Zero-2W"
 			(at 25.4 39.9284 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -32,7 +32,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "untitled.kicad_sch"
+		(property "Sheetfile" "rasp-pi.kicad_sch"
 			(at 25.4 90.7546 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -47,6 +47,52 @@
 			(project "tricorder"
 				(path "/6c0a5ebf-5219-47c3-a1b9-62b4178b6e16"
 					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 88.9 137.16)
+		(size 43.18 29.21)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "a20dc7af-f73d-4a7d-9c17-5a1f53de3afd")
+		(property "Sheetname" "Power sink-only"
+			(at 88.9 136.4484 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "power-sink-only.kicad_sch"
+			(at 88.9 166.9546 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "tricorder"
+				(path "/6c0a5ebf-5219-47c3-a1b9-62b4178b6e16"
+					(page "4")
 				)
 			)
 		)
@@ -67,7 +113,7 @@
 			(color 0 0 0 0)
 		)
 		(uuid "e1a77ea1-d219-4d38-89d3-97281217f057")
-		(property "Sheetname" "Untitled Sheet 2"
+		(property "Sheetname" "Power source-sink"
 			(at 92.71 31.0384 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -78,7 +124,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "untitled2.kicad_sch"
+		(property "Sheetfile" "power-source-sink.kicad_sch"
 			(at 92.71 99.6446 0)
 			(show_name no)
 			(do_not_autoplace no)

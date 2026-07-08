@@ -657,7 +657,7 @@
         "uuid": "caaf678f-8acc-4374-8a3c-e2f988181ddd"
       }
     ],
-    "used_designators": "TP_5V1,R_{SYNC}1,R_{FBT}1,R_{ENT}1,R_{ENB}1,R_{FBB}1,D_{1}1,TP_GND1,JP1-42,C_{SS}1,#PWR69-81,C5-6,C12-17,U6,U11-12,D58-144,#FLG4-5,C_{IN1}1,C_{IN3}1,C_{IN4}1,C_{OUT1}1,C_{OUT3}1,R10-11,TP_24V1,C_{IN2}1,C_{OUT2}1",
+    "used_designators": "Q1-2,#PWR1-69,U1-11,D1-91,C1-15,TP1-4,R1-9,MK1,#FLG1-3,L1,SW1-2,RN1,R_{SYNC}1,J1-48,C_{OUT1}1",
     "variants": []
   },
   "sheets": [
