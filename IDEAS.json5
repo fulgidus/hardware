@@ -1,0 +1,404 @@
+{
+    // IDEAS.json5 — Hardware project ideas registry
+    // Schema v2
+    // Immutable append-only iterations. Git tracks versioning.
+    _schema: "v2",
+    _created: "2026-07-09",
+    ideas: [
+        {
+            id: "nmtmya",
+            name: "Nice to Meet You All",
+            status: "active", // active | paused | abandoned | done
+            description: "Business-card wardriving / secops recon tool",
+            tags: [
+                "wardriving",
+                "secops",
+                "RFID",
+                "LoRa",
+                "UWB",
+                "thin"
+            ],
+            // ── Iterations (append-only, newest at bottom) ──
+            iterations: [
+                {
+                    created_at: "2026-07-09T17:30:00Z",
+                    summary: "Initial concept — C5 + CH32V307 dual-MCU, concurrent SPI scanning",
+                    // Architecture as Mermaid diagram
+                    architecture: 'graph TD\
+C5["ESP32-C5\nWiFi6+BLE, orchestrator"]\
+CH32["CH32V307\n3xSPI+DMA, radio controller"]\
+C5 --SPI2--> DW3K["DW3000\nUWB"]\
+C5 --UART--> CH32\
+CH32--SPI1+DMA --> LO["ASR6601\nLoRa 868MHz"]\
+CH32--SPI2+DMA --> LF["ST25R3916\nLF RFID"]\
+CH32--SPI3+DMA --> HF["PN5180\nHF RFID/NFC"]\
+C5--GPIO --> IR["IR TX/RX"]\
+C5--GPIO --> USB["USB-C\nflash/debug/data"]',
+                    // BOM — items can be ICs, modules, passives, connectors, etc.
+                    bom: [
+                        {
+                            ref: "U1",
+                            fn: "Main MCU",
+                            mpn: "ESP32-C5FH4",
+                            qty: 1,
+                            cost_eur: 2.30,
+                            distributor: "DigiKey",
+                            datasheet: "https://documentation.espressif.com/esp32-c5_datasheet_en.pdf",
+                            link: "https://www.digikey.com/...",
+                            notes: "Orchestrator, WiFi 6 dual-band, BLE 5.0, 802.15.4",
+                            specs: {
+                                package: "QFN48",
+                                dims_mm: "6×6",
+                                thickness_mm: 0.80,
+                                cores: 1,
+                                speed_mhz: 240,
+                                isa: "RISC-V RV32IMC",
+                                ram_kb: 384,
+                                flash_mb: 4,
+                                usb: "FS 12Mbps",
+                                wifi: "WiFi 6 dual-band 2.4+5GHz",
+                                ble: "5.0",
+                                protocols: [
+                                    "802.15.4",
+                                    "Zigbee",
+                                    "Thread",
+                                    "Matter"
+                                ],
+                            },
+                        },
+                        {
+                            ref: "U2",
+                            fn: "SPI co-processor",
+                            mpn: "CH32V307WCU6",
+                            qty: 1,
+                            cost_eur: 2.60,
+                            distributor: "LCSC",
+                            datasheet: "http://www.jc-net.co.jp/pdf/CH32V307DS0-EN.pdf",
+                            link: "https://lcsc.com/...",
+                            notes: "Handles 3 concurrent SPI buses via DMA, talks to C5 over UART",
+                            specs: {
+                                package: "QFN68",
+                                dims_mm: "8×8",
+                                thickness_mm: 0.75,
+                                cores: 1,
+                                speed_mhz: 144,
+                                isa: "RISC-V RV32IMFC",
+                                ram_kb: 64,
+                                flash_kb: 256,
+                                spi_count: 3,
+                                dma_per_spi: true,
+                                uart_count: 8,
+                            },
+                        },
+                        {
+                            ref: "U3",
+                            fn: "LoRa radio (self-hosted)",
+                            mpn: "ASR6601CB00-QF64",
+                            qty: 1,
+                            cost_eur: 3.50,
+                            distributor: "AliExpress / LCSC",
+                            datasheet: "https://www.asrmicro.com/en/goods/proinfo/22.html",
+                            link: null,
+                            notes: "Built-in RISC-V MCU + LoRa modem. Runs Meshtastic. C5 sends cmds via UART",
+                            specs: {
+                                package: "QFN68",
+                                dims_mm: "8×8",
+                                thickness_mm: 0.75,
+                                cores: 1,
+                                speed_mhz: 48,
+                                isa: "RISC-V STAR-MC1 (Cortex-M4 class)",
+                                ram_kb: 64,
+                                flash_kb: 256,
+                                freq_range_mhz: "150–960",
+                                tx_power_dbm: 22,
+                                rssi_dbm: -148,
+                                modes: [
+                                    "LoRa",
+                                    "FSK",
+                                    "MSK",
+                                    "BPSK"
+                                ],
+                                lora_bw_khz_max: 500,
+                            },
+                        },
+                        {
+                            ref: "U4",
+                            fn: "UWB transceiver",
+                            mpn: "DW3000CPC",
+                            qty: 1,
+                            cost_eur: 4.80,
+                            distributor: "Mouser / Qorvo direct",
+                            datasheet: "https://www.mouser.com/pdfDocs/DW3000DataSheet5.pdf",
+                            link: null,
+                            notes: "Use WLCSP52 variant for 0.50mm thickness. Needs underfill",
+                            specs: {
+                                package: "WLCSP52",
+                                dims_mm: "3.1×3.5",
+                                thickness_mm: 0.50,
+                                protocol: "IEEE 802.15.4z",
+                                freq_range_ghz: "6.0–8.5",
+                                ranging_precision_cm: 10,
+                                spi_iface: true,
+                            },
+                        },
+                        {
+                            ref: "U5",
+                            fn: "LF RFID frontend (125/134kHz)",
+                            mpn: "ST25R3916-AQET",
+                            qty: 1,
+                            cost_eur: 3.20,
+                            distributor: "DigiKey",
+                            datasheet: "https://www.st.com/resource/en/datasheet/st25r3916b.pdf",
+                            link: null,
+                            notes: "-AQET suffix = ultra-thin UFQFPN32 0.55mm. -AQWT is 1.0mm!",
+                            specs: {
+                                package: "UFQFPN32",
+                                dims_mm: "5×5",
+                                thickness_mm: 0.55,
+                                freq: "125/134 kHz LF",
+                                protocols: [
+                                    "EM4100",
+                                    "HID Prox",
+                                    "ISO 11784/85",
+                                    "FDX-B"
+                                ],
+                                spi_iface: true,
+                                host_irq: true,
+                            },
+                        },
+                        {
+                            ref: "U6",
+                            fn: "HF RFID / NFC frontend",
+                            mpn: "PN5180A0HN/C1",
+                            qty: 1,
+                            cost_eur: 2.80,
+                            distributor: "DigiKey",
+                            datasheet: "https://www.nxp.com/docs/en/data-sheet/PN5180A0XX-C1-C2.pdf",
+                            link: null,
+                            notes: "SPI-only. Alternative: CH585 (RISC-V+NFC+BT5.4 on chip, 0.75mm). TBD",
+                            specs: {
+                                package: "QFN",
+                                dims_mm: "7×7",
+                                thickness_mm: 0.85,
+                                freq: "13.56 MHz",
+                                protocols: [
+                                    "ISO 14443A/B",
+                                    "ISO 15693",
+                                    "NFC Forum 1-5"
+                                ],
+                                spi_speed_mhz: 7,
+                            },
+                        },
+                        {
+                            ref: "U7",
+                            fn: "IR receiver",
+                            mpn: "TSOP38438",
+                            qty: 1,
+                            cost_eur: 0.60,
+                            distributor: "DigiKey",
+                            datasheet: null,
+                            link: null,
+                            notes: "38kHz carrier, standard IR remote decoding",
+                            specs: {
+                                package: "3-pin through-hole / SMD",
+                                thickness_mm: 0.80,
+                                carrier_khz: 38,
+                                range_m: 25,
+                            },
+                        },
+                        {
+                            ref: "D1",
+                            fn: "IR LED",
+                            mpn: "TSAL6200",
+                            qty: 1,
+                            cost_eur: 0.20,
+                            distributor: "DigiKey",
+                            notes: "Standard 5mm IR LED, 940nm",
+                            specs: {
+                                package: "5mm THT",
+                                thickness_mm: 1.20, // board-level: will be laid flat or use SMD variant
+                                wavelength_nm: 940,
+                            },
+                        },
+                        {
+                            ref: "ANT1",
+                            fn: "WiFi/BLE antenna",
+                            mpn: "PCB trace",
+                            qty: 1,
+                            cost_eur: 0,
+                            notes: "Integrated PCB trace antenna per Espressif design guidelines",
+                            specs: {
+                                type: "inverted-F meander",
+                                bands: [
+                                    "2.4 GHz",
+                                    "5 GHz"
+                                ],
+                                dimensions_mm: "on-board",
+                            },
+                        },
+                        {
+                            ref: "ANT2",
+                            fn: "LoRa antenna",
+                            mpn: "PCB trace or u.FL",
+                            qty: 1,
+                            cost_eur: 0.80,
+                            notes: "PCB trace for thinness, u.FL connector for external option",
+                            specs: {
+                                freq_mhz: 868, // EU band; swap for 915 in US
+                                dimensions_mm: "on-board",
+                            },
+                        },
+                        {
+                            ref: "ANT3",
+                            fn: "LF RFID coil",
+                            mpn: "PCB-etched loop",
+                            qty: 1,
+                            cost_eur: 0,
+                            notes: "Etched multi-turn loop on PCB. Tuning caps needed",
+                            specs: {
+                                freq: "125/134 kHz",
+                                inductance_uh: "~400-600",
+                            },
+                        },
+                        {
+                            ref: "ANT4",
+                            fn: "HF NFC antenna",
+                            mpn: "PCB-etched spiral",
+                            qty: 1,
+                            cost_eur: 0,
+                            notes: "PCB-etched 13.56MHz spiral per NXP app note. Tuning network req'd",
+                            specs: {
+                                freq: "13.56 MHz",
+                                turns: 3,
+                                dimensions_mm: "~40×30",
+                            },
+                        },
+                    ],
+                    // PCB specifications — support multiple boards per project
+                    pcbs: [
+                        {
+                            id: "main",
+                            fn: "Main radio board",
+                            layers: 6,
+                            thickness_mm: 0.80,
+                            copper_weight: "1oz",
+                            material: "FR-4 (Isola 370HR recommended for thin stackup)",
+                            impedance_control: true,
+                            max_component_height_mm: 0.90, // SX1262 (now ASR6601 @ 0.75)
+                            notes: "Antenna regions need clearance. UWB needs controlled impedance 50Ω",
+                        },
+                    ],
+                    // Power profiles in mW
+                    power_profiles: {
+                        emergency: 2000, // all radios TX at once (theoretical max)
+                        hyperactive: 1200, // all radios active scanning, no TX
+                        active: 850, // WiFi + 2 radios scanning
+                        idle: 250, // WiFi connected, radios sleeping
+                        sleep: 15, // C5 deep sleep, all radios off
+                        deep_sleep: 0.05, // RTC only, wake on timer
+                    },
+                    // Battery options
+                    batteries: [
+                        {
+                            id: "lipo_500",
+                            chemistry: "LiPo",
+                            cap_mah: 500,
+                            min_v: 3.2,
+                            max_v: 4.2,
+                            max_ci_ma: 1000, // max continuous current draw
+                            dims_mm: "50×30×5",
+                            notes: "Fits under PCB, pouch cell",
+                        },
+                        {
+                            id: "lipo_1200",
+                            chemistry: "LiPo",
+                            cap_mah: 1200,
+                            min_v: 3.2,
+                            max_v: 4.2,
+                            max_ci_ma: 2400,
+                            dims_mm: "60×37×6",
+                            notes: "Thicker, needs more vertical space. Better endurance",
+                        },
+                        {
+                            id: "li_ion_18650",
+                            chemistry: "Li-Ion 18650",
+                            cap_mah: 3500,
+                            min_v: 3.0,
+                            max_v: 4.2,
+                            max_ci_ma: 10000,
+                            dims_mm: "18ø×65",
+                            notes: "Cylindrical. Too thick for credit-card form. External pack option",
+                        },
+                    ],
+                    // Change log — why this version exists
+                    changelog: [
+                        "Dropped WiFi 7 (MT7925U 2.4mm) — too thick, USB bandwidth bottleneck",
+                        "Dropped ESP32-P4 — no WiFi 7 needed, C5 is sufficient orchestrator",
+                        "Added CH32V307 for 3 concurrent SPI+DMA buses — true parallel scanning",
+                        "Swapped SX1262 (0.90mm) → ASR6601 (0.75mm) — thinner, self-hosted LoRa",
+                        "DW3000 moved to C5's SPI2 — literally one free bus, duh",
+                        "SDR monitoring deferred to P4 daughter board (future expansion)",
+                        "Architecture: C5 (WiFi+BLE+UWB+USB) + CH32V307 (LoRa+LF+HF+IR)",
+                    ],
+                    todos: [
+                        "Finalize HF RFID: PN5180 (0.85mm, mature) vs CH585 (0.75mm, NFC+BTE5.4 on-chip)",
+                        "Verify DW3000 WLCSP52 availability on Mouser/DigiKey",
+                        "Check ASR6601 availability outside China (AliExpress only?)",
+                        "Antenna placement feasibility — 5 antennas on credit-card PCB: routing nightmare?",
+                        "6-layer 0.8mm PCB with impedance control — which fab can do it affordably?",
+                        "P4 daughter board spec for SDR future: pinout, interface, power budget",
+                        "SD card slot for logging? SPI or SDIO? Adds 1.4mm height",
+                    ],
+                },
+            ],
+        },
+        {
+            id: "rc-tmr-c-pwr-on",
+            name: "RC Timer cascading power-on",
+            status: "active", // active | paused | abandoned | done
+            description: "Cascading RC timer circuit to power on a device after a delay and supply the same power to the next device in the chain. Useful for sequentially powering on multiple devices to avoid inrush current issues.",
+            tags: [
+                "RC timer",
+                "cascading",
+                "power-on",
+                "sequential",
+                "electronics"
+            ],
+            iterations: [
+                {
+                    created_at: "2026-07-10T16:58:00Z+02:00",
+                    summary: "Initial concept - simple RC timer with transistor switch",
+                    architecture: 'graph TD\
+VCC[12VDC Power Supply]\
+GND[GND]\
+OUT[Load + Output]\
+subgraph R-C_Timer [R-C Timer with reset]\
+    R1[100kΩ Resistor]\
+    D1["1N4148 Diode<br>Cathode thoward VCC, anode to R2"]\
+    C1[10µF MLCC 25V cap]\
+end\
+subgraph Trigger_Stage [BJT threshold switch]\
+    R2["4.7kΩ Resistor (basic protection)"]\
+    Q1[2N2222 NPN Transistor]\
+end\
+subgraph Power_Stage [High-side power MOSFET switch]\
+    R3["10kΩ Resistor (pull-up gate)"]\
+    Q2[AO3401A P-channel MOSFET]\
+end\
+R2 --> D1 --> VCC\
+VCC --> R1 --> R2\
+VCC --> R3--> |Pin1: Gate| Q2\
+VCC -->|Pin2: SRC| Q2\
+R2 -->|Pin1: Base| Q1 -->|Pin2: Emitter| GND\
+Q1 -->|"Pin3: Collector (pilots the gate)"| Q2\
+R1 --> C1 --> GND\
+Q2 -->|Pin3: Drain| OUT\
+%% Styling\
+style VCC fill:#d4edda,stroke:#28a745,stroke-width:2px\
+style OUT fill:#f8d7da,stroke:#dc3545,stroke-width:2px\
+style GND fill:#e2e3e5,stroke:#6c757d,stroke-width:2px'
+                },
+            ],
+        }
+    ]
+}
